@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Target(ElementType.FIELD)
 public @interface EmailAddressConstraint {
 
-    String message() default "Invalid Email";
+    String message() default "Given email address already exist.";
 
     Class<?>[] groups() default {};
 

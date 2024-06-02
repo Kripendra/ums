@@ -7,8 +7,6 @@ import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-import java.util.Objects;
-
 public class UserNameValidator implements ConstraintValidator<UserNameConstraint, String> {
 
     @Autowired
@@ -22,13 +20,6 @@ public class UserNameValidator implements ConstraintValidator<UserNameConstraint
 
     @Override
     public boolean isValid(String username, ConstraintValidatorContext context) {
-
-        if(!Objects.isNull(userRepository.findByUsername(username))){
-            return true;
-        }
-        context.disableDefaultConstraintViolation();
-        context.buildConstraintViolationWithTemplate("Username " + username + "already exist.").addConstraintViolation();
-
-        return false;
+        return userRepository.findByUsername(username).isEmpty();
     }
 }

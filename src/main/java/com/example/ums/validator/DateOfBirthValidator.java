@@ -17,14 +17,8 @@ public class DateOfBirthValidator implements ConstraintValidator<DateOfBirthCons
 
     @Override
     public boolean isValid(String date, ConstraintValidatorContext context) {
-
         LocalDate givenDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        if (!givenDate.isAfter(LocalDate.now())){
-            return true;
-        }
-        context.disableDefaultConstraintViolation();
-        context.buildConstraintViolationWithTemplate("Invalid date: " + date).addConstraintViolation();
 
-        return false;
+        return !givenDate.isAfter(LocalDate.now());
     }
 }

@@ -1,14 +1,13 @@
 package com.example.ums.entity;
 
 
-import com.example.ums.constraint.DateOfBirthConstraint;
-import com.example.ums.constraint.EmailAddressConstraint;
-import com.example.ums.constraint.UserNameConstraint;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "ums_user")
+@Table(name = "UMS_USER")
 public class User {
 
     @Id
@@ -16,7 +15,6 @@ public class User {
     private Long userID;
 
     @Column(unique = true)
-    @UserNameConstraint
     private String username;
 
     private String firstName;
@@ -24,12 +22,12 @@ public class User {
     private String lastName;
 
     @Column(unique = true)
-    @EmailAddressConstraint
     private String email;
 
-    @DateOfBirthConstraint
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
+
+    // Getters and Setters
     public Long getUserID() {
         return userID;
     }
@@ -70,11 +68,11 @@ public class User {
         this.email = email;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }

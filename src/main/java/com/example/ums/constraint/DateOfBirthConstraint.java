@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Target(ElementType.FIELD)
 public @interface DateOfBirthConstraint {
 
-    String message() default "Invalid Date of Birth.";
+    String message() default "Date of Birth must be in the past.";
 
     Class<?>[] groups() default {};
 

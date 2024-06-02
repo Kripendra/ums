@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Target(ElementType.FIELD)
 public @interface UserNameConstraint {
 
-    String message() default "Invalid username";
+    String message() default "Given username already exist.";
 
     Class<?>[] groups() default {};
 
